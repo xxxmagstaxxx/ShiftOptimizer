@@ -1,0 +1,188 @@
+変換例を挙げます。
+
+入力:
+
+day1{11時半から16時半,どれだけ入っても大丈夫},day2{,9:00〜18:00で、屋内は2時間}
+day1{いつでも,屋外は2時間まで},day2{11:00～17:15まで,5時間ぐらい、屋外企画は1時間半ぐらいまで}
+day1{,},day2{11:30から16:00まで,全体で3時間半程度、屋外は1時間まで}
+day1{9:00～12:00、15:00～17:30,屋外は入りたくない},day2{10:30から16:00まで,全体で2時間程度、屋外は微妙です}
+day1{,12:00から18:00},day2{,ずっと入れる、屋内5時間屋外1時間}
+
+出力:
+
+{
+  "output_person": [
+    {
+      "person_oneday": [
+        {
+          "day": 1,
+          "time_intervals": [
+            {
+              "time_start": "11:30",
+              "time_end": "16:30"
+            }
+          ],
+          "desire_all": -1,
+          "desire_out": -1
+        },
+        {
+          "day": 2,
+          "time_intervals": [
+            {
+              "time_start": "09:00",
+              "time_end": "18:00"
+            }
+          ],
+          "desire_all": -1,
+          "desire_out": -1
+        }
+      ]
+    },
+    {
+      "person_oneday": [
+        {
+          "day": 1,
+          "time_intervals": [
+            {
+              "time_start": "09:00",
+              "time_end": "18:00"
+            }
+          ],
+          "desire_all": -1,
+          "desire_out": 4
+        },
+        {
+          "day": 2,
+          "time_intervals": [
+            {
+              "time_start": "11:00",
+              "time_end": "17:15"
+            }
+          ],
+          "desire_all": 10,
+          "desire_out": 3
+        }
+      ]
+    },
+    {
+      "person_oneday": [
+        {
+          "day": 2,
+          "time_intervals": [
+            {
+              "time_start": "11:30",
+              "time_end": "16:00"
+            }
+          ],
+          "desire_all": 7,
+          "desire_out": 2
+        }
+      ]
+    },
+    {
+      "person_oneday": [
+        {
+          "day": 1,
+          "time_intervals": [
+            {
+              "time_start": "09:00",
+              "time_end": "12:00"
+            },
+            {
+              "time_start": "15:00",
+              "time_end": "17:30"
+            }
+          ],
+          "desire_all": -1,
+          "desire_out": 0
+        },
+        {
+          "day": 2,
+          "time_intervals": [
+            {
+              "time_start": "10:30",
+              "time_end": "16:00"
+            }
+          ],
+          "desire_all": 4,
+          "desire_out": 0
+        }
+      ]
+    },
+    {
+      "person_oneday": [
+        {
+          "day": 1,
+          "time_intervals": [
+            {
+              "time_start": "12:00",
+              "time_end": "18:00"
+            }
+          ],
+          "desire_all": -1,
+          "desire_out": -1
+        },
+        {
+          "day": 2,
+          "time_intervals": [
+            {
+              "time_start": "9:00",
+              "time_end": "18:00"
+            }
+          ],
+          "desire_all": -1,
+          "desire_out": 2
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "type": 0,
+      "terms": [
+        {
+          "coefficient": 1,
+          "variable": "ue[0,1]"
+        },
+        {
+          "coefficient": -1,
+          "variable": "ve[0,1]"
+        },
+        {
+          "coefficient": 1,
+          "variable": "vs[0,1]"
+        },
+        {
+          "coefficient": -1,
+          "variable": "us[0,1]"
+        }
+      ],
+      "constant": 4
+    },
+    {
+      "type": 0,
+      "terms": [
+        {
+          "coefficient": 1,
+          "variable": "ue[4,1]"
+        },
+        {
+          "coefficient": -1,
+          "variable": "ve[4,1]"
+        },
+        {
+          "coefficient": 1,
+          "variable": "vs[4,1]"
+        },
+        {
+          "coefficient": -1,
+          "variable": "us[4,1]"
+        }
+      ],
+      "constant": 10
+    }
+  ]
+}
+
+以下の勤務希望を変換してください。
+
